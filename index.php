@@ -19,8 +19,9 @@ $config = [
     'password' => '',
     'dbName' => '',
 ];
+
 $app = new Application($config);
 
-$app->router->route('/', 'welcome.php');
+$app->router->route('/', 'home.php');
 
 $app->run();
