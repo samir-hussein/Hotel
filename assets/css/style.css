@@ -27,7 +27,7 @@ nav div a:hover{
     text-decoration: none;
 }
 #sec1 div ul li img{
-    height: 650px !important;
+    height: 100% !important;
 }
 #sec2{
     background-color:#f8f9fa;
@@ -160,7 +160,10 @@ footer div div p a {
 }
 #book-now-sec div{
     background-color: rgba(0, 0, 0, 0.7);
-    padding: 10%;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 #book-now-sec div h1{
     color: #fff;
@@ -176,4 +179,221 @@ footer div div p a {
     color: #fff;
     background-color: #fd7e14;
     width: 50%;
+}
+#a-arrow{
+    background-color: #fd7e14;
+    width: 50px; 
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    bottom: 8vh;
+    right: 5vw;
+    display: none;
+}
+#a-arrow svg{
+    display: none;
+}
+#a-arrow #arrow-top svg{
+    display: block;
+    color: #fff;
+    width: 100px;
+}
+@media (max-width: 575.98px){
+    html,body{
+        font-size: 1em;
+    }
+    h1,h2,h3,h4,h5,h6{
+        font-weight: 600;
+    }
+    #sec1 div.uk-overlay{
+        padding: 0;
+    }
+    #sec1 ul.uk-slideshow-items{
+        min-height: 400px !important;
+    }
+    #sec1 div div p{
+        width: 80%;
+        margin: auto !important;
+        margin-bottom: 2% !important;
+    }
+    #sec2 form div.row{
+        width: 95% !important;
+    }
+    #sec2{
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+    #sec2 div.align-items-end{
+        justify-content: center;
+    }
+    #sec3 p{
+        width: 100% !important;
+    }
+    #sec3 #gallery-part{
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+    #sec3 video{
+        width: 100% !important;
+    }
+    #sec4 {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+    #sec5{
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+    #sec5 div ul{
+        width: 95% !important;
+    }
+    #sec5 div ul li{
+        padding: 0;
+    }
+    #sec5 div ul li h3{
+        font-size: 1em;
+    }
+    #sec5 div ul li img{
+        width: 100px;
+        height: 100px;
+    }
+    #sec5 div ul li p{
+        font-size: 0.8em;
+    }
+    #sec7 {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        padding-bottom: 0 !important;
+    }
+    #sec7 div form{
+        width: 90% !important;
+        margin: auto;
+        padding: 5% !important;
+    }
+    #sec7 div#map{
+        margin-bottom: 0 !important;
+    }
+    #sec7 div iframe{
+        height: 200px !important;
+    }
+    footer div#overlay{
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        padding-bottom: 0 !important
+    }
+    footer div#overlay ul li{
+        text-align: center;
+    }
+    footer div#overlay div#book-now-button-footer{
+        text-align: center;
+    }
+    #book-now-sec2{
+        padding-left: 0 !important;
+        padding-right: 0 !important
+    }
+    #book-now-sec2 div.row{
+        width: 100% !important;
+    }
+    #book-now-sec div{
+        height: 300px;
+    }
+}
+@media (min-width: 575.98px) and (max-width: 1199.98px){
+    html,body{
+        font-size: 1em;
+    }
+    h1,h2,h3,h4,h5,h6{
+        font-weight: 600;
+    }
+    #sec1 div.uk-overlay{
+        padding: 0;
+    }
+    #sec1 ul.uk-slideshow-items{
+        min-height: 400px !important;
+    }
+    #sec1 div div p{
+        width: 80%;
+        margin: auto !important;
+        margin-bottom: 2% !important;
+    }
+    #sec2 form div.row{
+        width: 95% !important;
+    }
+    #sec2{
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+    #sec2 div.align-items-end{
+        justify-content: center;
+    }
+    #sec3 p{
+        width: 100% !important;
+    }
+    #sec3 #gallery-part{
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+    #sec3 video{
+        width: 100% !important;
+    }
+    #sec4 {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+    #sec5{
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+    #sec5 div ul{
+        width: 95% !important;
+    }
+    #sec5 div ul li{
+        padding: 0;
+    }
+    #sec5 div ul li h3{
+        font-size: 1em;
+    }
+    #sec5 div ul li img{
+        width: 100px;
+        height: 100px;
+    }
+    #sec5 div ul li p{
+        font-size: 0.8em;
+    }
+    #sec7 {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        padding-bottom: 0 !important;
+    }
+    #sec7 div form{
+        width: 90% !important;
+        margin: auto;
+        padding: 5% !important;
+    }
+    #sec7 div#map{
+        margin-bottom: 0 !important;
+    }
+    #sec7 div iframe{
+        height: 200px !important;
+    }
+    footer div#overlay{
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        padding-bottom: 0 !important
+    }
+    footer div#overlay ul li{
+        text-align: center;
+    }
+    footer div#overlay div#book-now-button-footer{
+        text-align: center;
+    }
+    #book-now-sec2 div.row{
+        width: 100% !important;
+    }
+    #book-now-sec div{
+        height: 300px;
+    }
 }

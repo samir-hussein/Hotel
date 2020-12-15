@@ -41,6 +41,18 @@ $this->title = "Book Now";
                     <input type="text" class="form-control">
                 </div>
                 <div class="mb-3">
+                    <label class="form-label">room type</label>
+                    <select class="form-select" aria-label="Default select example">
+                        <option value="">choose type</option>
+                        <option value="">option2</option>
+                        <option value="">option3</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">number of rooms</label>
+                    <input type="text" class="form-control">
+                </div>
+                <div class="mb-3">
                     <label class="form-label">notes</label>
                     <textarea class="form-control" rows="3"></textarea>
                 </div>

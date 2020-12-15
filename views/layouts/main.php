@@ -14,6 +14,7 @@ $this->title = "Home";
     <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
     <!-- UIkit CSS -->
     <link rel="stylesheet" href="/assets/css/uikit.min.css" />
+    <link rel="stylesheet" href="/assets/css/animate.css" />
     <!-- Google font -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
@@ -42,22 +43,22 @@ $this->title = "Home";
                     <a class="nav-link active" aria-current="page" href="/">HOME</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">ABOUT</a>
+                    <a class="nav-link active" aria-current="page" href="javascript:;" onclick="scrl('sec3')">ABOUT</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">GALLERY</a>
+                    <a class="nav-link active" aria-current="page" href="javascript:;" onclick="scrl('gallery-part')">GALLERY</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">ROOMS</a>
+                    <a class="nav-link active" aria-current="page" href="javascript:;" onclick="scrl('sec4')">ROOMS</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">CONTACT</a>
+                    <a class="nav-link active" aria-current="page" href="javascript:;" onclick="scrl('sec7')">CONTACT</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">RESTAURANT</a>
+                    <a class="nav-link active" aria-current="page" href="javascript:;" onclick="scrl('sec5')">RESTAURANT</a>
                     </li>
                     <li class="nav-item" id="booknow">
-                    <a class="text-center nav-link active" aria-current="page" href="#">BOOK NOW</a>
+                    <a class="text-center nav-link active" aria-current="page" href="/book-now">BOOK NOW</a>
                     </li>
                 </ul>
                 </div>
@@ -70,31 +71,32 @@ $this->title = "Home";
     </main>
 
     <footer>
+    <a href="javascript:;" uk-totop uk-scroll id="a-arrow"><span id="arrow-top" uk-icon="arrow-up"></span></a>
         <div id="overlay" class="p-5">
         <div class="row w-75 m-auto">
-            <div class="col-12 col-md">
+            <div class="col-12 col-md-6 col-xl">
                 <ul class="list-unstyled">
                     <li class="lh-lg"><a href="/">home</a></li>
-                    <li class="lh-lg"><a href="/">about</a></li>
-                    <li class="lh-lg"><a href="/">gallery</a></li>
+                    <li class="lh-lg"><a href="javascript:;" onclick="scrl('sec3')">about</a></li>
+                    <li class="lh-lg"><a href="javascript:;" onclick="scrl('gallery-part')">gallery</a></li>
                 </ul>
             </div>
-            <div class="col-12 col-md">
+            <div class="col-12 col-md-6 col-xl">
             <ul class="list-unstyled">
-                    <li class="lh-lg"><a href="/">rooms</a></li>
-                    <li class="lh-lg"><a href="/">contact</a></li>
-                    <li class="lh-lg"><a href="/">restaurant</a></li>
+                    <li class="lh-lg"><a href="javascript:;" onclick="scrl('sec4')">rooms</a></li>
+                    <li class="lh-lg"><a href="javascript:;" onclick="scrl('sec7')">contact</a></li>
+                    <li class="lh-lg"><a href="javascript:;" onclick="scrl('sec5')">restaurant</a></li>
                 </ul>
             </div>
-            <div class="col-12 col-md">
+            <div class="col-12 col-md-6 col-xl">
             <ul class="list-unstyled">
                     <li class="lh-lg"><span uk-icon="location"></span>203 Fake St. Mountain View, San Francisco, California, USA</li>
                     <li class="lh-lg"><span uk-icon="receiver"></span>01144435326</li>
                     <li class="lh-lg"><span uk-icon="mail"></span>info@yourdomain.com</li>
                 </ul>
             </div>
-            <div class="col-12 col-md">
-                <a href="#" class="lh-lg">book now <span uk-icon="arrow-right"></span></a>
+            <div class="col-12 col-md-6 col-xl" id="book-now-button-footer">
+                <a href="/book-now" class="lh-lg">book now <span uk-icon="arrow-right"></span></a>
             </div>
         </div>
         <div class="row">
@@ -117,6 +119,10 @@ $this->title = "Home";
         $(window).on("load",function(){
             $(".preload").fadeOut("slow");
         });
+    </script>
+    <script src="/assets/js/wow.min.js"></script>
+    <script>
+        new WOW().init();
     </script>
 </body>
 </html>
