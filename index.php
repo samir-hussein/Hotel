@@ -23,5 +23,6 @@ $config = [
 $app = new Application($config);
 
 $app->router->route('/', 'home.php');
+$app->router->route('/book-now', 'booknow.php');
 
 $app->run();

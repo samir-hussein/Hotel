@@ -158,6 +158,7 @@
                         <li class="lh-lg"><strong>facilities: </strong>closet with hangers, hd flat-screen TV, telephone</li>
                         <li class="lh-lg"><strong>bed type: </strong>one bed</li>
                     </ul>
+                    <a href="#" class="d-block text-center">book now</a>
                 </div>
             </div>
         </li>
@@ -175,6 +176,7 @@
                         <li class="lh-lg"><strong>facilities: </strong>closet with hangers, hd flat-screen TV, telephone</li>
                         <li class="lh-lg"><strong>bed type: </strong>one bed</li>
                     </ul>
+                    <a href="#" class="d-block text-center">book now</a>
                 </div>
             </div>
         </li>
@@ -192,6 +194,7 @@
                         <li class="lh-lg"><strong>facilities: </strong>closet with hangers, hd flat-screen TV, telephone</li>
                         <li class="lh-lg"><strong>bed type: </strong>one bed</li>
                     </ul>
+                    <a href="#" class="d-block text-center">book now</a>
                 </div>
             </div>
         </li>
@@ -209,6 +212,7 @@
                         <li class="lh-lg"><strong>facilities: </strong>closet with hangers, hd flat-screen TV, telephone</li>
                         <li class="lh-lg"><strong>bed type: </strong>one bed</li>
                     </ul>
+                    <a href="#" class="d-block text-center">book now</a>
                 </div>
             </div>
         </li>
@@ -226,6 +230,7 @@
                         <li class="lh-lg"><strong>facilities: </strong>closet with hangers, hd flat-screen TV, telephone</li>
                         <li class="lh-lg"><strong>bed type: </strong>one bed</li>
                     </ul>
+                    <a href="#" class="d-block text-center">book now</a>
                 </div>
             </div>
         </li>
@@ -447,4 +452,51 @@
     </ul>
 
 </div>
+</section>
+
+<section id="sec6">
+    <div class="row">
+        <div class="col-12 col-md">
+            <h3 class="text-center">A Best Place To Stay. book Now!</h3>
+        </div>
+        <div class="col-12 col-md text-center">
+            <a href="#">book now <span uk-icon="arrow-right"></span></a>
+        </div>
+    </div>
+</section>
+
+<section class="p-5" id="sec7">
+<h2 class="uk-heading-line uk-text-center mb-5"><span>contact us</span></h2>
+    <div class="row">
+        <div class="col-12 col-md">
+            <div>
+                <form action="" class="uk-box-shadow-small">
+                    <div class="mb-3">
+                        <label class="form-label">name</label>
+                        <input type="text" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">subject</label>
+                        <input type="text" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">message</label>
+                        <textarea class="form-control" rows="3"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <button class="btn d-block m-auto">send</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-12 col-md">
+            <div class="h-100">
+            <iframe class="d-block m-auto" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d110502.60399768576!2d31.188252191881773!3d30.05961837876211!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14583fa60b21beeb%3A0x79dfb296e8423bba!2sCairo%2C%20Cairo%20Governorate!5e0!3m2!1sen!2seg!4v1608031246892!5m2!1sen!2seg" frameborder="0" style="border:0;width:100%;height:100%;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+            </div>
+        </div>
+    </div>
 </section>

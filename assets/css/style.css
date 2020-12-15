@@ -68,10 +68,112 @@ nav div a:hover{
 #sec4{
     background-color: #f8f9fa;
 }
+#sec4 div div ul li div div a{
+    color: #fff;
+    background-color: #fd7e14;
+}
+#sec4 div div ul li div div a:hover{
+    text-decoration: none;
+}
 #sec5 .uk-tab>.uk-active>a{
     border-color: #fd7e14;
 }
 #sec5 div ul li img{
     width: 150px;
     height: 150px;
+}
+#sec6{
+    background-image: url("/assets/images/hero_4.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+#sec6 div.row{
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 8% 5%;
+}
+#sec6 div div h3{
+    color: #fff;
+}
+#sec6 div div a{
+    color: #fff;
+    background-color: #fd7e14;
+    padding: 2% 3%;
+}
+#sec6 div div a:hover{
+    text-decoration: none;
+}
+#sec7 div div div form{
+    border: #ced4da solid 1px;
+    padding: 2%;
+    border-radius: 0.25rem;
+}
+#sec7 div div div form button{
+    color: #fff;
+    background-color: #fd7e14;
+    width: 50%;
+    font-size: 1.2em;
+}
+footer{
+    background-image: url(/assets/images/footer-bg.webp);
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 100%;
+    background-size: cover;
+}
+footer div#overlay{
+    background-color: rgba(0, 0, 0, 0.7);
+}
+footer div div ul li{
+    color: #fff;
+}
+footer div div div ul li span{
+    margin-right: 2% !important;
+}
+footer div div div a{
+    color: #fff;
+    background-color: #fd7e14;
+    padding: 2% 5%;
+}
+footer div div ul li a{
+    color: #fff;
+    background: inherit;
+    padding:0;
+}
+footer div div a:hover{
+    color: #fff;
+    text-decoration: none;
+}
+footer div div p{
+    color: #fff;
+}
+footer div div p a {
+    background: inherit;
+    padding: 0;
+    color: #777;
+}
+#book-now-sec{
+    background-image: url("/assets/images/f3178ca7b8b3835352c8a0a2672ac7fd.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+#book-now-sec div{
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 10%;
+}
+#book-now-sec div h1{
+    color: #fff;
+}
+#book-now-sec2{
+    background-color: #f8f9fa;
+}
+#book-now-sec2 div form{
+    background-color:#fff;
+    padding: 5%;
+}
+#book-now-sec2 div form button{
+    color: #fff;
+    background-color: #fd7e14;
+    width: 50%;
 }
