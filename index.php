@@ -10,6 +10,7 @@ error_reporting(E_ALL);
 
 require_once 'core/autoload.php';
 
+use controllers\home_slider\AddHomeSlider;
 use controllers\Login;
 use controllers\Logout;
 use controllers\users\AddUser;
@@ -35,5 +36,6 @@ $app->router->route('/logout', [Logout::class, 'logout']);
 $app->router->route('/admin/home', '/admin/index.php');
 $app->router->route('/admin/add-user', [AddUser::class, 'add']);
 $app->router->route('/admin/all-user', [AllUsers::class, 'allUsers']);
+$app->router->route('/admin/add_home_slider', [AddHomeSlider::class, 'add']);
 
 $app->run();

@@ -35,7 +35,7 @@
 <h2 class="uk-heading-line uk-text-center"><span>check availability</span></h2>
 <form action="">
     <div data-wow-duration="3s" class= "wow fadeInUp row w-75 m-auto uk-box-shadow-small p-3 mt-5">
-        <div class="col-12 col-md-6 col-xl">
+        <div class="col-12 col-md-6 col-xl-3">
             <div class="uk-margin">
                 <label class="uk-form-label" for="form-stacked-select">check in</label>
                 <div class="uk-form-controls">
@@ -43,7 +43,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-12 col-md-6 col-xl">
+        <div class="col-12 col-md-6 col-xl-3">
             <div class="uk-margin">
                 <label class="uk-form-label" for="form-stacked-select">check out</label>
                 <div class="uk-form-controls">
@@ -51,7 +51,27 @@
                 </div>
             </div>
         </div>
-        <div class="col-12 col-md-6 col-xl-2">
+        <div class="col-12 col-md-6 col-xl-3">
+            <div class="uk-margin">
+                <label class="uk-form-label">room type</label>
+                <div class="uk-form-controls">
+                <select class="uk-select" aria-label="Default select example">
+                    <option value="">choose type</option>
+                    <option value="">option2</option>
+                    <option value="">option3</option>
+                </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-xl-3">
+            <div class="uk-margin">
+                <label class="uk-form-label" for="form-stacked-select">number of rooms</label>
+                <div class="uk-form-controls">
+                    <input class="uk-input" type="text" placeholder="1">
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-xl-4">
             <div class="uk-margin">
                 <label class="uk-form-label" for="form-stacked-select">adults</label>
                 <div class="uk-form-controls">
@@ -59,7 +79,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-12 col-md-6 col-xl-2">
+        <div class="col-12 col-md-6 col-xl-4">
             <div class="uk-margin">
                 <label class="uk-form-label" for="form-stacked-select">children (1 - 13) years</label>
                 <div class="uk-form-controls">
@@ -67,9 +87,9 @@
                 </div>
             </div>
         </div>
-        <div class="col-12 col-xl d-flex align-items-end">
-            <div class="uk-margin">
-            <button class="btn">Check Availability</button>
+        <div class="col-12 col-xl-4 d-flex align-items-end">
+            <div class="uk-margin w-100">
+            <button class="btn w-100">Check Availability</button>
             </div>
         </div>
     </div>
