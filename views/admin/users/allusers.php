@@ -1,17 +1,17 @@
 <?php
-    session_start();
-    if($_SESSION['type'] == "admin"){
-        $this->response->redirect("/admin");
-        exit;
-    }
+session_start();
+if ($_SESSION['type'] == "admin") {
+    $this->response->redirect("/admin");
+    exit;
+}
 ?>
 <div>
     <div class="card">
         <div class="card-header">
             <strong class="card-title">All Users</strong>
         </div>
-        <?php if(isset($this->loadData['msg']['success'])):?>
-        <div class="alert alert-success"><?=$this->loadData['msg']['success']?></div>
+        <?php if (isset($this->loadData['msg']['success'])): ?>
+        <div class="alert alert-success msg"><?=$this->loadData['msg']['success']?></div>
         <?php endif;?>
         <div class="card-body">
             <table class="table">
@@ -24,10 +24,9 @@
                 </tr>
                 </thead>
                 <tbody>
-                <?php 
-                    foreach($this->loadData['table'] as $row)
-                    {
-                        ?>
+                <?php
+foreach ($this->loadData['table'] as $row) {
+    ?>
                         <tr>
                             <td><?=$row['name']?></td>
                             <td><?=$row['email']?></td>
@@ -40,8 +39,8 @@
                             </td>
                         </tr>
                         <?php
-                    }
-                ?>
+}
+?>
                 </tbody>
             </table>
 

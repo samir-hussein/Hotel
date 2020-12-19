@@ -73,8 +73,15 @@ if (!isset($_SESSION['user']) || empty($_SESSION['user'])) {
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-tasks"></i>Home Slider</a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="fa fa-bars"></i><a href="ui-buttons.html">edit & delete</a></li>
+                            <li><i class="fa fa-bars"></i><a href="/admin/all_home_slider">edit & delete</a></li>
                             <li><i class="fa fa-bars"></i><a href="/admin/add_home_slider">add</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-tasks"></i>Hotel images</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="fa fa-bars"></i><a href="/admin/all_hotel_images">delete</a></li>
+                            <li><i class="fa fa-bars"></i><a href="/admin/add_hotel_images">add</a></li>
                         </ul>
                     </li>
                     <?php if ($_SESSION['type'] == "owner"): ?>
@@ -150,6 +157,8 @@ if (!isset($_SESSION['user']) || empty($_SESSION['user'])) {
         $(document).ready(function() {
           $('#bootstrap-data-table-export').DataTable();
         } );
+
+        $('.msg').fadeOut(10000);
     </script>
 
 </body>

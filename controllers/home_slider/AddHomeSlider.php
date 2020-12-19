@@ -17,6 +17,10 @@ class AddHomeSlider
             $add->validate();
         }
 
+        $add->checkEdit();
+        if ($add->edit()) {
+            Application::$app->response->redirect('/admin/all_home_slider?success');
+        }
         Application::$app->router->renderView('/admin/Home_Slider/add.php');
 
     }
