@@ -10,6 +10,8 @@ error_reporting(E_ALL);
 
 require_once 'core/autoload.php';
 
+use controllers\about_us\AddAboutUs;
+use controllers\about_us\AllAboutUs;
 use controllers\home_slider\AddHomeSlider;
 use controllers\home_slider\AllHomeSlider;
 use controllers\hotel_images\AddHotelImages;
@@ -43,5 +45,7 @@ $app->router->route('/admin/add_home_slider', [AddHomeSlider::class, 'add']);
 $app->router->route('/admin/all_home_slider', [AllHomeSlider::class, 'all']);
 $app->router->route('/admin/add_hotel_images', [AddHotelImages::class, 'add']);
 $app->router->route('/admin/all_hotel_images', [AllHotelImages::class, 'all']);
+$app->router->route('/admin/add_about_us', [AddAboutUs::class, 'add']);
+$app->router->route('/admin/all_about_us', [AllAboutUs::class, 'all']);
 
 $app->run();
