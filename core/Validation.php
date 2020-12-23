@@ -40,6 +40,11 @@ class Validation
         return filter_var($number, FILTER_SANITIZE_NUMBER_INT);
     }
 
+    public static function money($number)
+    {
+        return filter_var($number, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
+    }
+
     public static function password($password)
     {
         // must be more than 8 ASCII characters, contain at least one upper case letter, one lower case letter and one digit.
