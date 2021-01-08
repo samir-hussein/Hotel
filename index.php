@@ -14,6 +14,8 @@ use controllers\about_us\AddAboutUs;
 use controllers\about_us\AllAboutUs;
 use controllers\all_foods\AddFood;
 use controllers\all_foods\AllFoods;
+use controllers\all_rooms\AddRoom;
+use controllers\all_rooms\AllRooms;
 use controllers\food_departments\AddFoodDepartment;
 use controllers\food_departments\AllFoodDepartments;
 use controllers\home_slider\AddHomeSlider;
@@ -59,5 +61,7 @@ $app->router->route('/admin/add_food', [AddFood::class, 'add']);
 $app->router->route('/admin/all_foods', [AllFoods::class, 'all']);
 $app->router->route('/admin/add_room_type', [AddRoomType::class, 'add']);
 $app->router->route('/admin/all_room_types', [AllRoomTypes::class, 'all']);
+$app->router->route('/admin/add_room', [AddRoom::class, 'add']);
+$app->router->route('/admin/all_rooms', [AllRooms::class, 'all']);
 
 $app->run();

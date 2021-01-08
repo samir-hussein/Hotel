@@ -112,6 +112,13 @@ if (!isset($_SESSION['user']) || empty($_SESSION['user'])) {
                             <li><i class="fa fa-bars"></i><a href="/admin/all_room_types">edit & delete</a></li>
                         </ul>
                     </li>
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-tasks"></i>all rooms</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="fa fa-bars"></i><a href="/admin/add_room">add room</a></li>
+                            <li><i class="fa fa-bars"></i><a href="/admin/all_rooms">edit & delete</a></li>
+                        </ul>
+                    </li>
                     <?php if ($_SESSION['type'] == "owner"): ?>
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-tasks"></i>Users</a>
