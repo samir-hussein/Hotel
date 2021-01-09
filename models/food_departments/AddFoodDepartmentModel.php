@@ -22,18 +22,25 @@ class AddFoodDepartmentModel
         if (isset($_POST['type']) && !empty($_POST['type'])) {
 
             $type = Validation::validateInput($_POST['type']);
-            $sql = "INSERT INTO food_departments (type) VALUES (:type)";
             $values = [
                 'type' => $type,
             ];
 
+            $sql = "SELECT * FROM food_departments WHERE type=:type";
             if (DataBase::$db->prepare($sql, $values)) {
-                $response = ['success' => "added successfully"];
+                $response = ['error' => "department is already exist"];
                 Application::$app->router->loadData = $response;
             } else {
-                $response = ['error' => "Something went wrong"];
-                Application::$app->router->loadData = $response;
+                $sql = "INSERT INTO food_departments (type) VALUES (:type)";
+                if (DataBase::$db->prepare($sql, $values)) {
+                    $response = ['success' => "added successfully"];
+                    Application::$app->router->loadData = $response;
+                } else {
+                    $response = ['error' => "Something went wrong"];
+                    Application::$app->router->loadData = $response;
+                }
             }
+
         } else {
             $response = [
                 'error' => 'Empty field',

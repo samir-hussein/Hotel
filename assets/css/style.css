@@ -1,4 +1,5 @@
-html,body{
+html,
+body {
     padding: 0;
     margin: 0;
     overflow-x: hidden;
@@ -6,183 +7,235 @@ html,body{
     text-transform: capitalize;
     font-size: 1.1em;
 }
-h1,h2,h3,h4,h5,h6{
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: 'Playfair Display', serif;
     text-transform: capitalize;
     font-weight: 700;
 }
-nav div div ul li a{
+
+nav div div ul li a {
     font-size: 0.9em;
 }
-nav div div ul li a:hover{
+
+nav div div ul li a:hover {
     color: #fd7e14 !important;
 }
-nav div ul #booknow{
+
+nav div ul #booknow {
     background-color: #fd7e14 !important;
 }
-nav div ul #booknow a{
+
+nav div ul #booknow a {
     color: #fff !important;
 }
-nav div a:hover{
+
+nav div a:hover {
     text-decoration: none;
 }
-#sec1 div ul li img{
+
+#sec1 div ul li img {
     height: 100% !important;
 }
-#sec2{
-    background-color:#f8f9fa;
+
+#sec2 {
+    background-color: #f8f9fa;
 }
-#sec2 form div.row{
+
+#sec2 form div.row {
     background-color: #fff;
     font-size: 0.8em;
 }
-#sec2 form input{
+
+#sec2 form input {
     border: 1px solid #e5e5e5;
     padding: 0 10px;
     widows: 100%;
     height: 40px;
     color: #666;
 }
-#sec2 form button{
+
+#sec2 form button {
     padding: 0 10px;
     widows: 100%;
     height: 40px;
     color: #fff;
     background-color: #fd7e14;
 }
-#sec3 div div ul li{
+
+#sec3 div div ul li {
     height: 500px;
 }
-#sec3 div div ul li div{
+
+#sec3 div div ul li div {
     display: block;
     height: 100%;
 }
-#sec3 div div ul li img{
-    width:100%;
+
+#sec3 div div ul li img {
+    width: 100%;
     height: 100%;
 }
-#sec3 #video button{
-    background-color:#fd7e14;
+
+#sec3 #video button {
+    background-color: #fd7e14;
     color: #fff;
 }
-#sec4{
+
+#sec4 {
     background-color: #f8f9fa;
 }
-#sec4 div div ul li div div a{
+
+#sec4 div div ul li div div a {
     color: #fff;
     background-color: #fd7e14;
 }
-#sec4 div div ul li div div a:hover{
+
+#sec4 div div ul li div div a:hover {
     text-decoration: none;
 }
-#sec5 .uk-tab>.uk-active>a{
+
+#sec4 div div a svg {
+    color: #fd7e14;
+}
+
+#sec5 .uk-tab>.uk-active>a {
     border-color: #fd7e14;
 }
-#sec5 div ul li img{
+
+#sec5 div ul li img {
     width: 150px;
     height: 150px;
 }
-#sec6{
-    background-image: url("/assets/images/hero_4.jpg");
+
+#sec6 {
+    background-image: url("/assets/images/book.webp");
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
 }
-#sec6 div.row{
+
+#sec6 div.row {
     background-color: rgba(0, 0, 0, 0.7);
     padding: 8% 5%;
 }
-#sec6 div div h3{
+
+#sec6 div div h3 {
     color: #fff;
 }
-#sec6 div div a{
+
+#sec6 div div a {
     color: #fff;
     background-color: #fd7e14;
     padding: 2% 3%;
 }
-#sec6 div div a:hover{
+
+#sec6 div div a:hover {
     text-decoration: none;
 }
-#sec7 div div div form{
+
+#sec7 div div div form {
     border: #ced4da solid 1px;
     padding: 2%;
     border-radius: 0.25rem;
 }
-#sec7 div div div form button{
+
+#sec7 div div div form button {
     color: #fff;
     background-color: #fd7e14;
     width: 50%;
     font-size: 1.2em;
 }
-footer{
+
+footer {
     background-image: url(/assets/images/footer-bg.webp);
     background-repeat: no-repeat;
     background-position: center;
     min-height: 100%;
     background-size: cover;
 }
-footer div#overlay{
+
+footer div#overlay {
     background-color: rgba(0, 0, 0, 0.7);
 }
-footer div div ul li{
+
+footer div div ul li {
     color: #fff;
 }
-footer div div div ul li span{
+
+footer div div div ul li span {
     margin-right: 2% !important;
 }
-footer div div div a{
+
+footer div div div a {
     color: #fff;
     background-color: #fd7e14;
     padding: 2% 5%;
 }
-footer div div ul li a{
+
+footer div div ul li a {
     color: #fff;
     background: inherit;
-    padding:0;
+    padding: 0;
 }
-footer div div a:hover{
+
+footer div div a:hover {
     color: #fff;
     text-decoration: none;
 }
-footer div div p{
+
+footer div div p {
     color: #fff;
 }
+
 footer div div p a {
     background: inherit;
     padding: 0;
     color: #777;
 }
-#book-now-sec{
-    background-image: url("/assets/images/f3178ca7b8b3835352c8a0a2672ac7fd.jpg");
+
+#book-now-sec {
+    background-image: url("/assets/images/book_now.webp");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
 }
-#book-now-sec div{
+
+#book-now-sec div {
     background-color: rgba(0, 0, 0, 0.7);
     height: 500px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-#book-now-sec div h1{
+
+#book-now-sec div h1 {
     color: #fff;
 }
-#book-now-sec2{
+
+#book-now-sec2 {
     background-color: #f8f9fa;
 }
-#book-now-sec2 div form{
-    background-color:#fff;
+
+#book-now-sec2 div form {
+    background-color: #fff;
     padding: 5%;
 }
-#book-now-sec2 div form button{
+
+#book-now-sec2 div form button {
     color: #fff;
     background-color: #fd7e14;
     width: 50%;
 }
-#a-arrow{
+
+#a-arrow {
     background-color: #fd7e14;
-    width: 50px; 
+    width: 50px;
     height: 50px;
     border-radius: 50%;
     display: flex;
@@ -193,74 +246,83 @@ footer div div p a {
     right: 5vw;
     display: none;
 }
-#a-arrow svg{
+
+#a-arrow svg {
     display: none;
 }
-#a-arrow #arrow-top svg{
+
+#a-arrow #arrow-top svg {
     display: block;
     color: #fff;
     width: 100px;
 }
-@media (max-width: 575.98px){
-    html,body{
+
+@media (max-width: 575.98px) {
+    html,
+    body {
         font-size: 1em;
     }
-    h1,h2,h3,h4,h5,h6{
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
         font-weight: 600;
     }
-    #sec1 div.uk-overlay{
+    #sec1 div.uk-overlay {
         padding: 0;
     }
-    #sec1 ul.uk-slideshow-items{
+    #sec1 ul.uk-slideshow-items {
         min-height: 400px !important;
     }
-    #sec1 div div p{
+    #sec1 div div p {
         width: 80%;
         margin: auto !important;
         margin-bottom: 2% !important;
     }
-    #sec2 form div.row{
+    #sec2 form div.row {
         width: 95% !important;
     }
-    #sec2{
+    #sec2 {
         padding-left: 0 !important;
         padding-right: 0 !important;
     }
-    #sec2 div.align-items-end{
+    #sec2 div.align-items-end {
         justify-content: center;
     }
-    #sec3 p{
+    #sec3 p {
         width: 100% !important;
     }
-    #sec3 #gallery-part{
+    #sec3 #gallery-part {
         padding-left: 0 !important;
         padding-right: 0 !important;
     }
-    #sec3 video{
+    #sec3 video {
         width: 100% !important;
     }
     #sec4 {
         padding-left: 0 !important;
         padding-right: 0 !important;
     }
-    #sec5{
+    #sec5 {
         padding-left: 0 !important;
         padding-right: 0 !important;
     }
-    #sec5 div ul{
+    #sec5 div ul {
         width: 95% !important;
     }
-    #sec5 div ul li{
+    #sec5 div ul li {
         padding: 0;
     }
-    #sec5 div ul li h3{
+    #sec5 div ul li h3 {
         font-size: 1em;
     }
-    #sec5 div ul li img{
+    #sec5 div ul li img {
         width: 100px;
         height: 100px;
     }
-    #sec5 div ul li p{
+    #sec5 div ul li p {
         font-size: 0.8em;
     }
     #sec7 {
@@ -268,99 +330,106 @@ footer div div p a {
         padding-right: 0 !important;
         padding-bottom: 0 !important;
     }
-    #sec7 div form{
+    #sec7 div form {
         width: 90% !important;
         margin: auto;
         padding: 5% !important;
     }
-    #sec7 div#map{
+    #sec7 div#map {
         margin-bottom: 0 !important;
     }
-    #sec7 div iframe{
+    #sec7 div iframe {
         height: 200px !important;
     }
-    footer div#overlay{
+    footer div#overlay {
         padding-left: 0 !important;
         padding-right: 0 !important;
         padding-bottom: 0 !important
     }
-    footer div#overlay ul li{
+    footer div#overlay ul li {
         text-align: center;
     }
-    footer div#overlay div#book-now-button-footer{
+    footer div#overlay div#book-now-button-footer {
         text-align: center;
     }
-    #book-now-sec2{
+    #book-now-sec2 {
         padding-left: 0 !important;
         padding-right: 0 !important
     }
-    #book-now-sec2 div.row{
+    #book-now-sec2 div.row {
         width: 100% !important;
     }
-    #book-now-sec div{
+    #book-now-sec div {
         height: 300px;
     }
 }
-@media (min-width: 575.98px) and (max-width: 1199.98px){
-    html,body{
+
+@media (min-width: 575.98px) and (max-width: 1199.98px) {
+    html,
+    body {
         font-size: 1em;
     }
-    h1,h2,h3,h4,h5,h6{
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
         font-weight: 600;
     }
-    #sec1 div.uk-overlay{
+    #sec1 div.uk-overlay {
         padding: 0;
     }
-    #sec1 ul.uk-slideshow-items{
+    #sec1 ul.uk-slideshow-items {
         min-height: 400px !important;
     }
-    #sec1 div div p{
+    #sec1 div div p {
         width: 80%;
         margin: auto !important;
         margin-bottom: 2% !important;
     }
-    #sec2 form div.row{
+    #sec2 form div.row {
         width: 95% !important;
     }
-    #sec2{
+    #sec2 {
         padding-left: 0 !important;
         padding-right: 0 !important;
     }
-    #sec2 div.align-items-end{
+    #sec2 div.align-items-end {
         justify-content: center;
     }
-    #sec3 p{
+    #sec3 p {
         width: 100% !important;
     }
-    #sec3 #gallery-part{
+    #sec3 #gallery-part {
         padding-left: 0 !important;
         padding-right: 0 !important;
     }
-    #sec3 video{
+    #sec3 video {
         width: 100% !important;
     }
     #sec4 {
         padding-left: 0 !important;
         padding-right: 0 !important;
     }
-    #sec5{
+    #sec5 {
         padding-left: 0 !important;
         padding-right: 0 !important;
     }
-    #sec5 div ul{
+    #sec5 div ul {
         width: 95% !important;
     }
-    #sec5 div ul li{
+    #sec5 div ul li {
         padding: 0;
     }
-    #sec5 div ul li h3{
+    #sec5 div ul li h3 {
         font-size: 1em;
     }
-    #sec5 div ul li img{
+    #sec5 div ul li img {
         width: 100px;
         height: 100px;
     }
-    #sec5 div ul li p{
+    #sec5 div ul li p {
         font-size: 0.8em;
     }
     #sec7 {
@@ -368,32 +437,32 @@ footer div div p a {
         padding-right: 0 !important;
         padding-bottom: 0 !important;
     }
-    #sec7 div form{
+    #sec7 div form {
         width: 90% !important;
         margin: auto;
         padding: 5% !important;
     }
-    #sec7 div#map{
+    #sec7 div#map {
         margin-bottom: 0 !important;
     }
-    #sec7 div iframe{
+    #sec7 div iframe {
         height: 200px !important;
     }
-    footer div#overlay{
+    footer div#overlay {
         padding-left: 0 !important;
         padding-right: 0 !important;
         padding-bottom: 0 !important
     }
-    footer div#overlay ul li{
+    footer div#overlay ul li {
         text-align: center;
     }
-    footer div#overlay div#book-now-button-footer{
+    footer div#overlay div#book-now-button-footer {
         text-align: center;
     }
-    #book-now-sec2 div.row{
+    #book-now-sec2 div.row {
         width: 100% !important;
     }
-    #book-now-sec div{
+    #book-now-sec div {
         height: 300px;
     }
 }

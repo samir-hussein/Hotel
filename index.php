@@ -18,6 +18,7 @@ use controllers\all_rooms\AddRoom;
 use controllers\all_rooms\AllRooms;
 use controllers\food_departments\AddFoodDepartment;
 use controllers\food_departments\AllFoodDepartments;
+use controllers\HomeComponents;
 use controllers\home_slider\AddHomeSlider;
 use controllers\home_slider\AllHomeSlider;
 use controllers\hotel_images\AddHotelImages;
@@ -40,7 +41,7 @@ $config = [
 
 $app = new Application($config);
 
-$app->router->route('/', 'home.php');
+$app->router->route('/', [HomeComponents::class, 'component']);
 $app->router->route('/book-now', 'booknow.php');
 
 // Admin Panel
