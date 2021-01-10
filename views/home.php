@@ -33,7 +33,7 @@ if (isset($this->loadData['home_slider'])) {
             <div class="uk-margin">
                 <label class="uk-form-label" for="form-stacked-select">check in</label>
                 <div class="uk-form-controls">
-                    <input class="uk-input" type="date" name="" value="">
+                    <input class="uk-input" type="date" id="in">
                 </div>
             </div>
         </div>
@@ -41,7 +41,7 @@ if (isset($this->loadData['home_slider'])) {
             <div class="uk-margin">
                 <label class="uk-form-label" for="form-stacked-select">check out</label>
                 <div class="uk-form-controls">
-                    <input class="uk-input" type="date" name="" value="">
+                    <input class="uk-input" type="date" id="out">
                 </div>
             </div>
         </div>
@@ -49,10 +49,23 @@ if (isset($this->loadData['home_slider'])) {
             <div class="uk-margin">
                 <label class="uk-form-label">room type</label>
                 <div class="uk-form-controls">
-                <select class="uk-select" aria-label="Default select example">
-                    <option value="">choose type</option>
-                    <option value="">option2</option>
-                    <option value="">option3</option>
+                <select id="room_type" class="uk-select" aria-label="Default select example">
+                <?php
+if (isset($this->loadData['rooms_types'])) {
+    ?>
+    <option value="">choose type</option>
+    <?php
+foreach ($this->loadData['rooms_types'] as $row) {
+        ?>
+                            <option value="<?=$row['name']?>"><?=$row['name']?></option>
+                            <?php
+}
+} else {
+    ?>
+    <option value="">no rooms available now</option>
+    <?php
+}
+?>
                 </select>
                 </div>
             </div>
@@ -61,7 +74,7 @@ if (isset($this->loadData['home_slider'])) {
             <div class="uk-margin">
                 <label class="uk-form-label" for="form-stacked-select">number of rooms</label>
                 <div class="uk-form-controls">
-                    <input class="uk-input" type="text" placeholder="1">
+                    <input class="uk-input" type="text" id="number_of_rooms" placeholder="1">
                 </div>
             </div>
         </div>
@@ -69,7 +82,7 @@ if (isset($this->loadData['home_slider'])) {
             <div class="uk-margin">
                 <label class="uk-form-label" for="form-stacked-select">adults</label>
                 <div class="uk-form-controls">
-                    <input class="uk-input" type="text" placeholder="1">
+                    <input class="uk-input" type="text" id="adults" placeholder="1">
                 </div>
             </div>
         </div>
@@ -77,13 +90,13 @@ if (isset($this->loadData['home_slider'])) {
             <div class="uk-margin">
                 <label class="uk-form-label" for="form-stacked-select">children (1 - 13) years</label>
                 <div class="uk-form-controls">
-                <input class="uk-input" type="text" placeholder="1">
+                <input class="uk-input" type="text" id="children" placeholder="1">
                 </div>
             </div>
         </div>
         <div class="col-12 col-xl-4 d-flex align-items-end">
             <div class="uk-margin w-100">
-            <button class="btn w-100">Check Availability</button>
+            <button id="submit" type="submit" class="btn w-100">Check Availability</button>
             </div>
         </div>
     </div>
@@ -193,7 +206,7 @@ if (!empty($row['children'])) {
 if (isset($this->loadData['food_departments'])) {
     foreach ($this->loadData['food_departments'] as $row) {
         ?>
-                <li class="uk-active" uk-filter-control="[data-color=<?=$row['type']?>]"><a href="#" class="pe-5 ps-5 fs-4 d-block"><?=$row['type']?></a></li>
+                <li class="<?=($row['type'] == 'BREAKFAST') ? 'uk-active' : ''?>" uk-filter-control="[data-color=<?=$row['type']?>]"><a href="#" class="pe-5 ps-5 fs-4 d-block"><?=$row['type']?></a></li>
                 <?php
 }
 }
@@ -276,3 +289,34 @@ if (isset($this->loadData['all_foods'])) {
         </div>
     </div>
 </section>
+
+<script>
+    $('#submit').click(function(){
+        event.preventDefault();
+        var checkIn = $('#in').val();
+        var checkOut = $('#out').val();
+        var roomType = $('#room_type').val();
+        var numberOfRooms = $('#number_of_rooms').val();
+        var adults = $('#adults').val();
+        var children = $('#children').val();
+        $.ajax({
+            url: "/CheckAvailability/check",
+            method: 'POST',
+            data: {
+                checkIn: checkIn,
+                checkOut: checkOut,
+                roomType: roomType,
+                numberOfRooms: numberOfRooms,
+                adults: adults,
+                children:children
+            },
+            success: function (data) {
+                if(data == 'true'){
+                    window.location.replace("/book-now?checkIn="+checkIn+"&checkOut="+checkOut+"&roomType="+roomType+"&numberOfRooms="+numberOfRooms+"&adults="+adults+"&children="+children);
+                }else{
+                    alert(data);
+                }
+            },
+        });
+    });
+</script>

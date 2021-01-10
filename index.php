@@ -16,6 +16,7 @@ use controllers\all_foods\AddFood;
 use controllers\all_foods\AllFoods;
 use controllers\all_rooms\AddRoom;
 use controllers\all_rooms\AllRooms;
+use controllers\BookNow;
 use controllers\food_departments\AddFoodDepartment;
 use controllers\food_departments\AllFoodDepartments;
 use controllers\HomeComponents;
@@ -42,7 +43,7 @@ $config = [
 $app = new Application($config);
 
 $app->router->route('/', [HomeComponents::class, 'component']);
-$app->router->route('/book-now', 'booknow.php');
+$app->router->route('/book-now', [BookNow::class, 'bookNow']);
 
 // Admin Panel
 $app->router->route('/admin', [Login::class, 'login']);
@@ -64,5 +65,9 @@ $app->router->route('/admin/add_room_type', [AddRoomType::class, 'add']);
 $app->router->route('/admin/all_room_types', [AllRoomTypes::class, 'all']);
 $app->router->route('/admin/add_room', [AddRoom::class, 'add']);
 $app->router->route('/admin/all_rooms', [AllRooms::class, 'all']);
+
+// Ajax requests
+$app->router->route('/CheckAvailability/check');
+$app->router->route('/CheckAvailability/bookNow');
 
 $app->run();
