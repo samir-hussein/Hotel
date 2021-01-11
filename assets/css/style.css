@@ -52,7 +52,7 @@ nav div a:hover {
     font-size: 0.8em;
 }
 
-#sec2 form input {
+#sec2 form input.uk-input {
     border: 1px solid #e5e5e5;
     padding: 0 10px;
     widows: 100%;
@@ -60,7 +60,7 @@ nav div a:hover {
     color: #666;
 }
 
-#sec2 form button {
+#sec2 form button#submit {
     padding: 0 10px;
     widows: 100%;
     height: 40px;
@@ -227,7 +227,7 @@ footer div div p a {
     padding: 5%;
 }
 
-#book-now-sec2 div form button {
+#book-now-sec2 div form button#submit {
     color: #fff;
     background-color: #fd7e14;
     width: 50%;

@@ -49,13 +49,10 @@ if (isset($this->loadData['home_slider'])) {
             <div class="uk-margin">
                 <label class="uk-form-label">room type</label>
                 <div class="uk-form-controls">
-                <select id="room_type" class="uk-select" aria-label="Default select example">
+                <select id="room_type" class="uk-select" aria-label="Default select example" multiple="multiple">
                 <?php
 if (isset($this->loadData['rooms_types'])) {
-    ?>
-    <option value="">choose type</option>
-    <?php
-foreach ($this->loadData['rooms_types'] as $row) {
+    foreach ($this->loadData['rooms_types'] as $row) {
         ?>
                             <option value="<?=$row['name']?>"><?=$row['name']?></option>
                             <?php
@@ -74,7 +71,7 @@ foreach ($this->loadData['rooms_types'] as $row) {
             <div class="uk-margin">
                 <label class="uk-form-label" for="form-stacked-select">number of rooms</label>
                 <div class="uk-form-controls">
-                    <input class="uk-input" type="text" id="number_of_rooms" placeholder="1">
+                    <input class="uk-input" type="text" id="number_of_rooms" placeholder="0">
                 </div>
             </div>
         </div>
@@ -82,7 +79,7 @@ foreach ($this->loadData['rooms_types'] as $row) {
             <div class="uk-margin">
                 <label class="uk-form-label" for="form-stacked-select">adults</label>
                 <div class="uk-form-controls">
-                    <input class="uk-input" type="text" id="adults" placeholder="1">
+                    <input class="uk-input" type="text" id="adults" placeholder="0">
                 </div>
             </div>
         </div>
@@ -90,7 +87,7 @@ foreach ($this->loadData['rooms_types'] as $row) {
             <div class="uk-margin">
                 <label class="uk-form-label" for="form-stacked-select">children (1 - 13) years</label>
                 <div class="uk-form-controls">
-                <input class="uk-input" type="text" id="children" placeholder="1">
+                <input class="uk-input" type="text" id="children" placeholder="0">
                 </div>
             </div>
         </div>
@@ -290,6 +287,14 @@ if (isset($this->loadData['all_foods'])) {
     </div>
 </section>
 
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#room_type').multiselect({
+            buttonWidth: '100%'
+        });
+    });
+</script>
+
 <script>
     $('#submit').click(function(){
         event.preventDefault();
@@ -299,20 +304,33 @@ if (isset($this->loadData['all_foods'])) {
         var numberOfRooms = $('#number_of_rooms').val();
         var adults = $('#adults').val();
         var children = $('#children').val();
+        var arr = [[roomType[0],numberOfRooms]];
+
+        if(roomType.length > 1){
+            arr = [];
+            var length = roomType.length;
+            var i = 0;
+            while(length > 0){
+                var val = prompt('Number Of '+ roomType[i]);
+                arr.push([roomType[i],val]);
+                length--;
+                i++;
+            }
+        }
+
         $.ajax({
             url: "/CheckAvailability/check",
             method: 'POST',
             data: {
                 checkIn: checkIn,
                 checkOut: checkOut,
-                roomType: roomType,
-                numberOfRooms: numberOfRooms,
                 adults: adults,
-                children:children
+                children:children,
+                arr:arr
             },
             success: function (data) {
                 if(data == 'true'){
-                    window.location.replace("/book-now?checkIn="+checkIn+"&checkOut="+checkOut+"&roomType="+roomType+"&numberOfRooms="+numberOfRooms+"&adults="+adults+"&children="+children);
+                    window.location.replace("/book-now?checkIn="+checkIn+"&checkOut="+checkOut+"&numberOfRooms="+numberOfRooms+"&adults="+adults+"&children="+children+"&arr="+arr);
                 }else{
                     alert(data);
                 }

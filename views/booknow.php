@@ -51,15 +51,22 @@ if (isset($_GET['checkIn'])) {
                 </div>
                 <div class="mb-3">
                     <label class="form-label">room type</label>
-                    <select id="room_type" class="form-select" aria-label="Default select example">
+                    <br>
+                    <select id="room_type" class="form-select" aria-label="Default select example" multiple="multiple">
                     <?php
 if (isset($this->loadData['rooms_types'])) {
-    ?>
-    <option value="">choose type</option>
-    <?php
-foreach ($this->loadData['rooms_types'] as $row) {
+    foreach ($this->loadData['rooms_types'] as $row) {
+        $selected = '';
+        if (isset($_GET['arr']) && !empty($_GET['arr'])) {
+            $arr = explode(',', $_GET['arr']);
+            foreach ($arr as $name) {
+                if ($row['name'] == $name) {
+                    $selected = 'selected';
+                }
+            }
+        }
         ?>
-                            <option value="<?=$row['name']?>" <?=(isset($_GET['roomType']) && $_GET['roomType'] == $row['name']) ? 'selected' : ''?>><?=$row['name']?></option>
+                            <option value="<?=$row['name']?>" <?=$selected?>><?=$row['name']?></option>
                             <?php
 }
 } else {
@@ -81,10 +88,21 @@ foreach ($this->loadData['rooms_types'] as $row) {
                 <div class="mb-3">
                     <button type="submit" id="submit" class="btn d-block m-auto">Book Now</button>
                 </div>
+                <div id="msg" class="alert text-center" role="alert" style="display:none;background:#fd7e14;color:#fff;">
+
+                </div>
             </form>
         </div>
     </div>
 </section>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#room_type').multiselect({
+                buttonWidth: '100%'
+            });
+        });
+    </script>
 
 <script>
 $('#submit').click(function(){
@@ -99,13 +117,26 @@ $('#submit').click(function(){
         var phone = $('#phone').val();
         var id = $('#id').val();
         var notes = $('#notes').val();
+        var arr = [[roomType[0], numberOfRooms]];
+
+        if(roomType.length > 1){
+            arr = [];
+            var length = roomType.length;
+            var i = 0;
+            while(length > 0){
+                var val = prompt('Number Of '+ roomType[i]);
+                arr.push([roomType[i],val]);
+                length--;
+                i++;
+            }
+        }
+
         $.ajax({
             url: "/CheckAvailability/bookNow",
             method: 'POST',
             data: {
                 checkIn: checkIn,
                 checkOut: checkOut,
-                roomType: roomType,
                 numberOfRooms: numberOfRooms,
                 adults: adults,
                 children:children,
@@ -113,9 +144,27 @@ $('#submit').click(function(){
                 phone: phone,
                 id: id,
                 notes: notes,
+                arr:arr
             },
             success: function (data) {
-                alert(data);
+                if(data.includes('finished')){
+                    $('#in').val("");
+                    $('#out').val("");
+                    $('#room_type').val("");
+                    $('#number_of_rooms').val("");
+                    $('#adults').val("");
+                    $('#children').val("");
+                    $('#name').val("");
+                    $('#phone').val("");
+                    $('#id').val("");
+                    $('#notes').val("");
+
+                    var response = data.split('/');
+                    $('#msg').html("The reservation was successful, the cost is $ "+response[0]+", if the cost is not paid in 3 days from now, the reservation is considered canceled.");
+                    $('#msg').css('display', 'block');
+                }else{
+                    alert(data);
+                }
             },
         });
     });

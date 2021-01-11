@@ -13,6 +13,16 @@ class Validation
         return $input;
     }
 
+    public static function validateArray($array)
+    {
+        for ($i = 0; $i < count($array); $i++) {
+            $array[$i] = trim($array[$i]);
+            $array[$i] = stripslashes($array[$i]);
+            $array[$i] = htmlspecialchars($array[$i]);
+        }
+        return $array;
+    }
+
     public static function email($email)
     {
         $email = self::validateInput($email);

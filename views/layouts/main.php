@@ -10,8 +10,10 @@ $this->title = "Home";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?=Application::$app->router->title?></title>
-    <!-- Bootstrab 4 CSS -->
+    <!-- Bootstrab 5 & 4 CSS -->
+    <link rel="stylesheet" href="/assets/css/bootstrap4.min.css">
     <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/bootstrap-multiselect.min.css" type="text/css"/>
     <!-- UIkit CSS -->
     <link rel="stylesheet" href="/assets/css/uikit.min.css" />
     <link rel="stylesheet" href="/assets/css/animate.css" />
@@ -107,8 +109,10 @@ $this->title = "Home";
         </div>
     </footer>
 
-    <!-- Bootstrab 4 JS -->
+    <!-- Bootstrab 5 & 4 JS -->
+    <script src="/assets/js/bootstrap4.bundle.min.js"></script>
     <script src="/assets/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="/assets/js/bootstrap-multiselect.min.js"></script>
     <!-- UIkit JS -->
     <script src="/assets/js/uikit.min.js"></script>
     <script src="/assets/js/uikit-icons.min.js"></script>

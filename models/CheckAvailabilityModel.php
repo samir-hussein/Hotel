@@ -9,12 +9,10 @@ class CheckAvailabilityModel
 
     public function check()
     {
-        if (isset($_POST['checkIn']) && isset($_POST['checkOut']) && isset($_POST['roomType']) && isset($_POST['numberOfRooms']) && isset($_POST['adults']) && isset($_POST['children']) && !empty($_POST['checkIn']) && !empty($_POST['checkOut']) && !empty($_POST['roomType']) && !empty($_POST['numberOfRooms']) && !empty($_POST['adults'])) {
+        if (isset($_POST['checkIn']) && isset($_POST['checkOut']) && isset($_POST['arr']) && isset($_POST['adults']) && isset($_POST['children']) && !empty($_POST['checkIn']) && !empty($_POST['checkOut']) && !empty($_POST['arr']) && !empty($_POST['adults'])) {
 
             $checkIn = Validation::validateInput($_POST['checkIn']);
             $checkOut = Validation::validateInput($_POST['checkOut']);
-            $roomType = Validation::validateInput($_POST['roomType']);
-            $numberOfRooms = Validation::validateInput($_POST['numberOfRooms']);
             $adults = Validation::validateInput($_POST['adults']);
             $children = Validation::validateInput($_POST['children']);
 
@@ -22,14 +20,18 @@ class CheckAvailabilityModel
                 return "Check Your Check Out Date";
             }
 
-            $adultsOneRoom = ceil($adults / $numberOfRooms);
-            $childrenOneRoom = (!empty($children)) ? ceil($children / $numberOfRooms) : '';
+            $arr = $_POST['arr'];
+            $total_adults = 0;
+            $total_children = 0;
+            for ($i = 0; $i < count($arr); $i++) {
+                $roomType = $arr[$i][0];
+                $sql = "SELECT * FROM rooms_types WHERE name=:roomType";
+                $value = ['roomType' => $roomType];
 
-            $sql = "SELECT * FROM rooms_types WHERE name=:roomType";
-            $value = ['roomType' => $roomType];
+                if ($response = DataBase::$db->prepare($sql, $value)) {
+                    $total_children += $response[0]['children'];
+                    $total_adults += $response[0]['adults'];
 
-            if ($response = DataBase::$db->prepare($sql, $value)) {
-                if ($adultsOneRoom <= $response[0]['adults'] && $childrenOneRoom <= $response[0]['children']) {
                     $sql = "SELECT count(*) FROM all_rooms WHERE (type=:roomType) AND (empty='yes' OR check_out < :checkIn)";
                     $values = [
                         'roomType' => $roomType,
@@ -37,17 +39,23 @@ class CheckAvailabilityModel
                     ];
                     if ($response = DataBase::$db->prepare($sql, $values)) {
                         $availableRooms = $response[0]['count(*)'];
-
-                        if ($availableRooms >= $numberOfRooms) {
-                            return 'true';
-                        } else {
+                        if ($availableRooms < $arr[$i][1]) {
                             return 'No Rooms Available Right Now';
                         }
                     }
-                } else {
-                    return "Too much adults or children";
                 }
             }
+
+            if (count($arr) == 1) {
+                $total_adults = $total_adults * $arr[0][1];
+                $total_children = $total_children * $arr[0][1];
+            }
+            if ($total_adults < $adults || $total_children < $children) {
+                return "Too much adults or children";
+            } else {
+                return 'true';
+            }
+
         } else {
             return 'Empty Field';
         }
@@ -66,43 +74,61 @@ class CheckAvailabilityModel
                 $id = Validation::phoneNumber($_POST['id']);
                 $checkIn = Validation::validateInput($_POST['checkIn']);
                 $checkOut = Validation::validateInput($_POST['checkOut']);
-                $roomType = Validation::validateInput($_POST['roomType']);
-                $numberOfRooms = Validation::validateInput($_POST['numberOfRooms']);
                 $adults = Validation::validateInput($_POST['adults']);
                 $children = Validation::validateInput($_POST['children']);
+                $totalRooms = Validation::validateInput($_POST['numberOfRooms']);
 
-                $sql = "SELECT * FROM all_rooms WHERE (type=:roomType) AND (empty='yes' OR check_out < :checkIn)";
-                $values = [
-                    'roomType' => $roomType,
-                    'checkIn' => $checkIn,
-                ];
-                if ($response = DataBase::$db->prepare($sql, $values)) {
-                    $count = $numberOfRooms;
-                    $roomsNames = '';
-                    foreach ($response as $row) {
-                        if ($count > 0) {
-                            $roomsNames .= $row['name'];
-                            $count--;
+                $arr = $_POST['arr'];
+                $roomsNames = '';
+                $total_nights = date_diff(date_create($checkIn), date_create($checkOut));
+                $total_nights = $total_nights->format("%a");
+                $total_cost = 0;
+                $count2 = $totalRooms;
+
+                for ($i = 0; $i < count($arr); $i++) {
+                    $roomType = $arr[$i][0];
+                    $numberOfRooms = $arr[$i][1];
+
+                    $sql = "SELECT * FROM all_rooms WHERE (type=:roomType) AND (empty='yes' OR check_out < :checkIn)";
+                    $values = [
+                        'roomType' => $roomType,
+                        'checkIn' => $checkIn,
+                    ];
+
+                    if ($response = DataBase::$db->prepare($sql, $values)) {
+                        $count = $numberOfRooms;
+                        foreach ($response as $row) {
                             if ($count > 0) {
-                                $roomsNames .= '-';
+                                $roomsNames .= $row['name'];
+                                $count--;
+                                $count2--;
+                                if ($count2 > 0) {
+                                    $roomsNames .= '-';
+                                }
                             }
-                        } else {
-                            break;
                         }
+                    }
+
+                    $sql = "SELECT * FROM rooms_types WHERE name=:roomType";
+                    $value = ['roomType' => $roomType];
+                    if ($response = DataBase::$db->prepare($sql, $value)) {
+                        $costPerNight = $response[0]['cost'];
+                        $total_cost += $total_nights * $costPerNight * $numberOfRooms;
                     }
                 }
 
-                $sql = "SELECT * FROM rooms_types WHERE name=:roomType";
-                $value = ['roomType' => $roomType];
-                if ($response = DataBase::$db->prepare($sql, $value)) {
-                    $costPerNight = $response[0]['cost'];
-                    $total_nights = date_diff(date_create($checkIn), date_create($checkOut));
-                    $total_nights = $total_nights->format("%a");
-                    $total_cost = $total_nights * $costPerNight * $numberOfRooms;
-                    echo $total_cost;
+                $sql = "INSERT INTO clients (name,phone,national_id,check_in,check_out,adults,children,room_type,number_of_rooms,rooms_names,total_cost,notes) VALUES (:name,:phone,:national_id,:check_in,:check_out,:adults,:children,:room_type,:number_of_rooms,:rooms_names,:total_cost,:notes)";
+
+                $all_rooms_types = '';
+                $length = count($arr);
+                for ($i = 0; $i < count($arr); $i++) {
+                    $all_rooms_types .= $arr[$i][0];
+                    $length--;
+                    if ($length > 0) {
+                        $all_rooms_types .= ',';
+                    }
                 }
 
-                $sql = "INSERT INTO clients (name,phone,national_id,check_in,check_out,adults,children,room_type,number_of_rooms,rooms_names,total_cost,notes) VALUES (:name,:phone,:national_id,:check_in,:check_out,:adults,:children,:room_type,:number_of_rooms,:rooms_names,:total_cost,:notes)";
                 $values = [
                     'name' => $name,
                     'phone' => $phone,
@@ -110,16 +136,16 @@ class CheckAvailabilityModel
                     'check_in' => $checkIn,
                     'check_out' => $checkOut,
                     'adults' => $adults,
-                    'children' => $children,
-                    'room_type' => $roomType,
-                    'number_of_rooms' => $numberOfRooms,
+                    'children' => (!empty($children)) ? $children : 0,
+                    'room_type' => $all_rooms_types,
+                    'number_of_rooms' => $totalRooms,
                     'rooms_names' => $roomsNames,
                     'total_cost' => $total_cost,
                     'notes' => $notes,
                 ];
 
                 if (DataBase::$db->prepare($sql, $values)) {
-
+                    $flag = true;
                     $all_rooms = explode('-', $roomsNames);
 
                     foreach ($all_rooms as $roomName) {
@@ -129,9 +155,13 @@ class CheckAvailabilityModel
                             'check_out' => $checkOut,
                             'roomName' => $roomName,
                         ];
-                        DataBase::$db->prepare($sql, $values);
+                        if (DataBase::$db->prepare($sql, $values) !== true) {
+                            $flag = false;
+                        }
                     }
-                    return true;
+                    if ($flag) {
+                        return $total_cost . '/finished';
+                    }
                 }
 
             } else {
