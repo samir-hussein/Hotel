@@ -43,6 +43,8 @@ class CheckAvailabilityModel
                             return 'No Rooms Available Right Now';
                         }
                     }
+                } else {
+                    return "No Room With This Name Check Your Room Type";
                 }
             }
 
@@ -117,7 +119,7 @@ class CheckAvailabilityModel
                     }
                 }
 
-                $sql = "INSERT INTO clients (name,phone,national_id,check_in,check_out,adults,children,room_type,number_of_rooms,rooms_names,total_cost,notes) VALUES (:name,:phone,:national_id,:check_in,:check_out,:adults,:children,:room_type,:number_of_rooms,:rooms_names,:total_cost,:notes)";
+                $sql = "INSERT INTO clients (name,phone,national_id,check_in,check_out,adults,children,room_type,number_of_rooms,rooms_names,total_cost,notes,paid) VALUES (:name,:phone,:national_id,:check_in,:check_out,:adults,:children,:room_type,:number_of_rooms,:rooms_names,:total_cost,:notes,:paid)";
 
                 $all_rooms_types = '';
                 $length = count($arr);
@@ -127,6 +129,11 @@ class CheckAvailabilityModel
                     if ($length > 0) {
                         $all_rooms_types .= ',';
                     }
+                }
+
+                $paid = 'no';
+                if (isset($_POST['paid']) && !empty($_POST['paid'])) {
+                    $paid = Validation::validateInput($_POST['paid']);
                 }
 
                 $values = [
@@ -142,6 +149,7 @@ class CheckAvailabilityModel
                     'rooms_names' => $roomsNames,
                     'total_cost' => $total_cost,
                     'notes' => $notes,
+                    'paid' => $paid,
                 ];
 
                 if (DataBase::$db->prepare($sql, $values)) {

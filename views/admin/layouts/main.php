@@ -36,6 +36,11 @@ if (!isset($_SESSION['user']) || empty($_SESSION['user'])) {
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 
+    <!-- <link rel="stylesheet" href="/assets/css/bootstrap4.min.css"> -->
+    <link rel="stylesheet" href="/assets/css/bootstrap-multiselect.min.css" type="text/css"/>
+    <script src="/assets/js/jquery-3.5.1.min.js"></script>
+
+
     <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
 
     <style>
@@ -128,6 +133,9 @@ if (!isset($_SESSION['user']) || empty($_SESSION['user'])) {
                         </ul>
                     </li>
                     <?php endif;?>
+                    <li>
+                        <a href="/admin/reservation"> <i class="menu-icon fa fa-tasks"></i>make a reservation</a>
+                    </li>
                 </ul>
             </div><!-- /.navbar-collapse -->
         </nav>
@@ -156,6 +164,9 @@ if (!isset($_SESSION['user']) || empty($_SESSION['user'])) {
                         <a href="/logout">
                             <button class="btn btn-danger float-right">Logout</button>
                         </a>
+                        <a href="/admin/reservation">
+                            <button class="btn btn-primary float-right mr-3">make a reservation</button>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -166,16 +177,9 @@ if (!isset($_SESSION['user']) || empty($_SESSION['user'])) {
     </div><!-- /#right-panel -->
 
     <!-- Right Panel -->
-
-    <script src="/views/admin/assets/js/vendor/jquery-2.1.4.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+    <script src="/assets/js/bootstrap4.bundle.min.js"></script>
     <script src="/views/admin/assets/js/plugins.js"></script>
     <script src="/views/admin/assets/js/main.js"></script>
-
-
-    <script src="/views/admin/assets/js/lib/chart-js/Chart.bundle.js"></script>
-    <script src="/views/admin/assets/js/dashboard.js"></script>
-    <script src="/views/admin/assets/js/widgets.js"></script>
     <script src="/views/admin/assets/js/lib/data-table/datatables.min.js"></script>
     <script src="/views/admin/assets/js/lib/data-table/dataTables.bootstrap.min.js"></script>
     <script src="/views/admin/assets/js/lib/data-table/dataTables.buttons.min.js"></script>
@@ -187,6 +191,9 @@ if (!isset($_SESSION['user']) || empty($_SESSION['user'])) {
     <script src="/views/admin/assets/js/lib/data-table/buttons.print.min.js"></script>
     <script src="/views/admin/assets/js/lib/data-table/buttons.colVis.min.js"></script>
     <script src="/views/admin/assets/js/lib/data-table/datatables-init.js"></script>
+
+
+    <script type="text/javascript" src="/assets/js/bootstrap-multiselect.min.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function() {

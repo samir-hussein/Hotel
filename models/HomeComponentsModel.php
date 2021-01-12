@@ -7,6 +7,45 @@ use core\DataBase;
 class HomeComponentsModel
 {
 
+    public function visits()
+    {
+        //total visits functionality
+        $sql = "SELECT total_visits From visits";
+        if ($response = DataBase::$db->prepare($sql)) {
+            $totalVisits = $response[0]['total_visits'];
+            $totalVisits++;
+            $sql = "UPDATE visits SET total_visits=$totalVisits";
+            DataBase::$db->prepare($sql);
+        }
+
+        //visitors functionality
+        $visitor_id = $_SERVER['REMOTE_ADDR'];
+        $sql = "SELECT * FROM visitors WHERE visitor_id='$visitor_id'";
+        if (!DataBase::$db->prepare($sql)) {
+            $sql = "INSERT INTO visitors (visitor_id) VALUES ('$visitor_id')";
+            DataBase::$db->prepare($sql);
+        }
+
+        //daily visits functionality
+        $sql = "SELECT today FROM visits";
+        if ($response = DataBase::$db->prepare($sql)) {
+            $today = $response[0]['today'];
+            $day = date('d');
+            if ($day != $today) {
+                $sql = "UPDATE visits SET today=$day, daily_visits=0";
+                DataBase::$db->prepare($sql);
+            }
+            $sql = "SELECT daily_visits FROM visits";
+            if ($response = DataBase::$db->prepare($sql)) {
+                $daily_visits = $response[0]['daily_visits'];
+                $daily_visits++;
+                $sql = "UPDATE visits SET daily_visits=$daily_visits";
+                DataBase::$db->prepare($sql);
+            }
+        }
+
+    }
+
     public function home_slider()
     {
         $sql = "SELECT * FROM home_slider";
@@ -57,6 +96,7 @@ class HomeComponentsModel
 
     public function all_components()
     {
+        $this->visits();
         $this->home_slider();
         $this->about_us();
         $this->hotel_images();

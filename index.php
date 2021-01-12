@@ -17,6 +17,7 @@ use controllers\all_foods\AllFoods;
 use controllers\all_rooms\AddRoom;
 use controllers\all_rooms\AllRooms;
 use controllers\BookNow;
+use controllers\CMSHome;
 use controllers\food_departments\AddFoodDepartment;
 use controllers\food_departments\AllFoodDepartments;
 use controllers\HomeComponents;
@@ -47,8 +48,8 @@ $app->router->route('/book-now', [BookNow::class, 'bookNow']);
 
 // Admin Panel
 $app->router->route('/admin', [Login::class, 'login']);
+$app->router->route('/admin/home', [CMSHome::class, 'components']);
 $app->router->route('/logout', [Logout::class, 'logout']);
-$app->router->route('/admin/home', '/admin/index.php');
 $app->router->route('/admin/add-user', [AddUser::class, 'add']);
 $app->router->route('/admin/all-user', [AllUsers::class, 'allUsers']);
 $app->router->route('/admin/add_home_slider', [AddHomeSlider::class, 'add']);
@@ -65,6 +66,7 @@ $app->router->route('/admin/add_room_type', [AddRoomType::class, 'add']);
 $app->router->route('/admin/all_room_types', [AllRoomTypes::class, 'all']);
 $app->router->route('/admin/add_room', [AddRoom::class, 'add']);
 $app->router->route('/admin/all_rooms', [AllRooms::class, 'all']);
+$app->router->route('/admin/reservation', [BookNow::class, 'bookNowAdmin']);
 
 // Ajax requests
 $app->router->route('/CheckAvailability/check');
