@@ -56,4 +56,28 @@ class CMSHomeModel
             Application::$app->router->loadData['empty_rooms'] = $response;
         }
     }
+
+    public function convert_rooms_status()
+    {
+        $today = date('Y-m-d');
+        $sql = "UPDATE all_rooms SET empty='yes',check_in=null,check_out=null WHERE check_out<='$today'";
+        DataBase::$db->prepare($sql);
+    }
+
+    public function check_expire()
+    {
+        $today = date('Y-m-d');
+        $sql = "SELECT * FROM clients WHERE expire_day<='$today'";
+        if ($response = DataBase::$db->prepare($sql)) {
+            foreach ($response as $row) {
+                $rooms_names = explode("-", $row['rooms_names']);
+                foreach ($rooms_names as $room) {
+                    $sql = "UPDATE all_rooms SET empty='yes',check_in=null,check_out=null WHERE name='$room'";
+                    DataBase::$db->prepare($sql);
+                }
+            }
+        }
+        $sql = "DELETE FROM clients WHERE expire_day<='$today'";
+        DataBase::$db->prepare($sql);
+    }
 }

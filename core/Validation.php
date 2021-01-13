@@ -16,9 +16,13 @@ class Validation
     public static function validateArray($array)
     {
         for ($i = 0; $i < count($array); $i++) {
-            $array[$i] = trim($array[$i]);
-            $array[$i] = stripslashes($array[$i]);
-            $array[$i] = htmlspecialchars($array[$i]);
+            if (!is_array($array[$i])) {
+                $array[$i] = trim($array[$i]);
+                $array[$i] = stripslashes($array[$i]);
+                $array[$i] = htmlspecialchars($array[$i]);
+            } else {
+                $array[$i] = self::validateArray($array[$i]);
+            }
         }
         return $array;
     }

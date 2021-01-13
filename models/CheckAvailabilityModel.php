@@ -15,12 +15,12 @@ class CheckAvailabilityModel
             $checkOut = Validation::validateInput($_POST['checkOut']);
             $adults = Validation::validateInput($_POST['adults']);
             $children = Validation::validateInput($_POST['children']);
+            $arr = Validation::validateArray($_POST['arr']);
 
             if ($checkOut <= $checkIn) {
                 return "Check Your Check Out Date";
             }
 
-            $arr = $_POST['arr'];
             $total_adults = 0;
             $total_children = 0;
             for ($i = 0; $i < count($arr); $i++) {
@@ -79,8 +79,8 @@ class CheckAvailabilityModel
                 $adults = Validation::validateInput($_POST['adults']);
                 $children = Validation::validateInput($_POST['children']);
                 $totalRooms = Validation::validateInput($_POST['numberOfRooms']);
+                $arr = Validation::validateArray($_POST['arr']);
 
-                $arr = $_POST['arr'];
                 $roomsNames = '';
                 $total_nights = date_diff(date_create($checkIn), date_create($checkOut));
                 $total_nights = $total_nights->format("%a");
@@ -119,7 +119,7 @@ class CheckAvailabilityModel
                     }
                 }
 
-                $sql = "INSERT INTO clients (name,phone,national_id,check_in,check_out,adults,children,room_type,number_of_rooms,rooms_names,total_cost,notes,paid) VALUES (:name,:phone,:national_id,:check_in,:check_out,:adults,:children,:room_type,:number_of_rooms,:rooms_names,:total_cost,:notes,:paid)";
+                $sql = "INSERT INTO clients (name,phone,national_id,check_in,check_out,adults,children,room_type,number_of_rooms,rooms_names,total_cost,notes,paid,expire_day) VALUES (:name,:phone,:national_id,:check_in,:check_out,:adults,:children,:room_type,:number_of_rooms,:rooms_names,:total_cost,:notes,:paid,:expire_day)";
 
                 $all_rooms_types = '';
                 $length = count($arr);
@@ -131,9 +131,13 @@ class CheckAvailabilityModel
                     }
                 }
 
+                $expire_day = date('Y-m-d', time() + (86400 * 4));
                 $paid = 'no';
                 if (isset($_POST['paid']) && !empty($_POST['paid'])) {
                     $paid = Validation::validateInput($_POST['paid']);
+                    if ($paid == 'yes') {
+                        $expire_day = null;
+                    }
                 }
 
                 $values = [
@@ -150,6 +154,7 @@ class CheckAvailabilityModel
                     'total_cost' => $total_cost,
                     'notes' => $notes,
                     'paid' => $paid,
+                    'expire_day' => $expire_day,
                 ];
 
                 if (DataBase::$db->prepare($sql, $values)) {

@@ -136,6 +136,9 @@ if (!isset($_SESSION['user']) || empty($_SESSION['user'])) {
                     <li>
                         <a href="/admin/reservation"> <i class="menu-icon fa fa-tasks"></i>make a reservation</a>
                     </li>
+                    <li>
+                        <a href="/admin/pending_reservations"> <i class="menu-icon fa fa-tasks"></i>Pending reservations</a>
+                    </li>
                 </ul>
             </div><!-- /.navbar-collapse -->
         </nav>
