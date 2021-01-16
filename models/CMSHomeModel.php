@@ -80,4 +80,21 @@ class CMSHomeModel
         $sql = "DELETE FROM clients WHERE expire_day<='$today'";
         DataBase::$db->prepare($sql);
     }
+
+    public function expire_clients()
+    {
+        $today = date('Y-m-d');
+        $sql = "SELECT * FROM clients";
+        if ($response = DataBase::$db->prepare($sql)) {
+            foreach ($response as $row) {
+                $check_out = $row['check_out'];
+                $expire = date('Y-m-d', strtotime($check_out) + (86400 * 365));
+                if ($today >= $expire) {
+                    $id = $row['id'];
+                    $sql = "DELETE FROM clients WHERE id=$id";
+                    DataBase::$db->prepare($sql);
+                }
+            }
+        }
+    }
 }

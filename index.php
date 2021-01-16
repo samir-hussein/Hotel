@@ -18,6 +18,7 @@ use controllers\all_rooms\AddRoom;
 use controllers\all_rooms\AllRooms;
 use controllers\BookNow;
 use controllers\CMSHome;
+use controllers\CurrentClients;
 use controllers\food_departments\AddFoodDepartment;
 use controllers\food_departments\AllFoodDepartments;
 use controllers\HomeComponents;
@@ -25,6 +26,7 @@ use controllers\home_slider\AddHomeSlider;
 use controllers\home_slider\AllHomeSlider;
 use controllers\hotel_images\AddHotelImages;
 use controllers\hotel_images\AllHotelImages;
+use controllers\LastYearClients;
 use controllers\Login;
 use controllers\Logout;
 use controllers\PendingReservations;
@@ -69,6 +71,8 @@ $app->router->route('/admin/add_room', [AddRoom::class, 'add']);
 $app->router->route('/admin/all_rooms', [AllRooms::class, 'all']);
 $app->router->route('/admin/reservation', [BookNow::class, 'bookNowAdmin']);
 $app->router->route('/admin/pending_reservations', [PendingReservations::class, 'controller']);
+$app->router->route('/admin/last-year-clients', [LastYearClients::class, 'clients']);
+$app->router->route('/admin/current-clients', [CurrentClients::class, 'clients']);
 
 // Ajax requests
 $app->router->route('/CheckAvailability/check');

@@ -139,6 +139,12 @@ if (!isset($_SESSION['user']) || empty($_SESSION['user'])) {
                     <li>
                         <a href="/admin/pending_reservations"> <i class="menu-icon fa fa-tasks"></i>Pending reservations</a>
                     </li>
+                    <li>
+                        <a href="/admin/current-clients"> <i class="menu-icon fa fa-tasks"></i>current clients</a>
+                    </li>
+                    <li>
+                        <a href="/admin/last-year-clients"> <i class="menu-icon fa fa-tasks"></i>last year clients</a>
+                    </li>
                 </ul>
             </div><!-- /.navbar-collapse -->
         </nav>

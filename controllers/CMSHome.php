@@ -16,6 +16,7 @@ class CMSHome
         $components->checkOut();
         $components->convert_rooms_status();
         $components->emptyRooms();
+        $components->expire_clients();
 
         Application::$app->router->renderView('/admin/index.php');
     }
