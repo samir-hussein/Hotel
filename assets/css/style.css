@@ -245,6 +245,7 @@ footer div div p a {
     bottom: 8vh;
     right: 5vw;
     display: none;
+    z-index: 1;
 }
 
 #a-arrow svg {
