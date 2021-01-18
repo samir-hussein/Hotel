@@ -12,7 +12,10 @@ if (!isset($_SESSION['user']) || empty($_SESSION['user'])) {
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="">
+<!--<![endif]-->
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -37,14 +40,15 @@ if (!isset($_SESSION['user']) || empty($_SESSION['user'])) {
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 
     <!-- <link rel="stylesheet" href="/assets/css/bootstrap4.min.css"> -->
-    <link rel="stylesheet" href="/assets/css/bootstrap-multiselect.min.css" type="text/css"/>
+    <link rel="stylesheet" href="/assets/css/bootstrap-multiselect.min.css" type="text/css" />
     <script src="/assets/js/jquery-3.5.1.min.js"></script>
 
 
     <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
 
     <style>
-        html, body {
+        html,
+        body {
             margin: 0;
             padding: 0;
             overflow-x: hidden;
@@ -53,10 +57,11 @@ if (!isset($_SESSION['user']) || empty($_SESSION['user'])) {
     </style>
 
 </head>
+
 <body>
 
 
-        <!-- Left Panel -->
+    <!-- Left Panel -->
 
     <aside id="left-panel" class="left-panel">
         <nav class="navbar navbar-expand-sm navbar-default">
@@ -124,15 +129,15 @@ if (!isset($_SESSION['user']) || empty($_SESSION['user'])) {
                             <li><i class="fa fa-bars"></i><a href="/admin/all_rooms">edit & delete</a></li>
                         </ul>
                     </li>
-                    <?php if ($_SESSION['type'] == "owner"): ?>
-                    <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-tasks"></i>Users</a>
-                        <ul class="sub-menu children dropdown-menu">
-                            <li><i class="menu-icon fa fa-th"></i><a href="/admin/add-user">Add</a></li>
-                            <li><i class="menu-icon fa fa-th"></i><a href="/admin/all-user">All Users</a></li>
-                        </ul>
-                    </li>
-                    <?php endif;?>
+                    <?php if ($_SESSION['type'] == "owner") : ?>
+                        <li class="menu-item-has-children dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-tasks"></i>Users</a>
+                            <ul class="sub-menu children dropdown-menu">
+                                <li><i class="menu-icon fa fa-th"></i><a href="/admin/add-user">Add</a></li>
+                                <li><i class="menu-icon fa fa-th"></i><a href="/admin/all-user">All Users</a></li>
+                            </ul>
+                        </li>
+                    <?php endif; ?>
                     <li>
                         <a href="/admin/reservation"> <i class="menu-icon fa fa-tasks"></i>make a reservation</a>
                     </li>
@@ -164,7 +169,7 @@ if (!isset($_SESSION['user']) || empty($_SESSION['user'])) {
                 <div class="col-sm-7">
                     <a id="menuToggle" class="menutoggle pull-left"><i class="fa fa fa-tasks"></i></a>
                     <div class="header-left">
-                        <h5 style="text-transform: capitalize;"><a href="home"><i class="fa fa-user"></i> Welcome <?=$_SESSION['user']?></a></h5>
+                        <h5 style="text-transform: capitalize;"><a href="home"><i class="fa fa-user"></i> Welcome <?= $_SESSION['user'] ?></a></h5>
                     </div>
                 </div>
 
@@ -206,11 +211,12 @@ if (!isset($_SESSION['user']) || empty($_SESSION['user'])) {
 
     <script type="text/javascript">
         $(document).ready(function() {
-          $('#bootstrap-data-table-export').DataTable();
-        } );
+            $('#bootstrap-data-table-export').DataTable();
+        });
 
         $('.msg').fadeOut(10000);
     </script>
 
 </body>
+
 </html>

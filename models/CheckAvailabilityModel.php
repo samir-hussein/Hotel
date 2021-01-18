@@ -1,4 +1,5 @@
 <?php
+
 namespace models;
 
 use core\DataBase;
@@ -57,7 +58,6 @@ class CheckAvailabilityModel
             } else {
                 return 'true';
             }
-
         } else {
             return 'Empty Field';
         }
@@ -176,7 +176,6 @@ class CheckAvailabilityModel
                         return $total_cost . '/finished';
                     }
                 }
-
             } else {
                 return "Empty Field";
             }
